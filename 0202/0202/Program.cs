@@ -44,6 +44,8 @@ class Solution
 {
     public static void Main(string[] args)
     {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
         int gradesCount = Convert.ToInt32(Console.ReadLine().Trim());
 
         List<int> grades = new List<int>();
@@ -56,6 +58,9 @@ class Solution
 
         List<int> result = Result.gradingStudents(grades);
 
-        Console.WriteLine(String.Join("\n", result));
+        textWriter.WriteLine(String.Join("\n", result));
+
+        textWriter.Flush();
+        textWriter.Close();
     }
 }
