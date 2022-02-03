@@ -62,6 +62,8 @@ class Solution
 {
     public static void Main(string[] args)
     {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
         string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
 
         int x1 = Convert.ToInt32(firstMultipleInput[0]);
@@ -74,6 +76,9 @@ class Solution
 
         string result = Result.kangaroo(x1, v1, x2, v2);
 
-        Console.WriteLine(result);
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
     }
 }
