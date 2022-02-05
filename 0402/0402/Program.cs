@@ -26,13 +26,12 @@ class Result
 
     public static List<int> rotLeft(List<int> a, int d)
     {
-        var output = new List<int>();
-
-        for (int i = 0; i < a.Count - d; i++)
-            output.Add(a[d + i]);             //Adding all of the elements that do not circle around.
         for (int i = 0; i < d; i++)
-            output.Add(a[i]);               //Adding all of the elements that circle around the array.
-        return output;
+        {
+            a.Add(a[0]);
+            a.Remove(a[0]);
+        }
+        return a;
     }
 
 }
@@ -41,7 +40,7 @@ class Solution
 {
     public static void Main(string[] args)
     {
-        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+        //TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
 
         string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
 
@@ -53,9 +52,10 @@ class Solution
 
         List<int> result = Result.rotLeft(a, d);
 
-        textWriter.WriteLine(String.Join(" ", result));
+        //textWriter.WriteLine(String.Join(" ", result));
 
-        textWriter.Flush();
-        textWriter.Close();
+        //textWriter.Flush();
+        //textWriter.Close();
+        Console.WriteLine(result);
     }
 }
